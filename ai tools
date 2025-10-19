@@ -1,0 +1,40 @@
+from tkinter import*
+
+
+def show_selection():
+    tool = selected_tool.get()
+    result_label.config(text=tool)
+
+root = Tk()
+root.title("AI Tool Selector")
+root.geometry("1080x1080")
+root.config(bg="lightblue")
+
+title_label = Label(root, text="Select the best AI tool among these;", font=("Arial", 24))
+title_label.pack(pady=20)
+
+selected_tool = StringVar(value="")
+
+ai_tools = [
+    "canva",
+    "Gemini",
+    "Meta AI",
+    "ChatGPT",
+    "perplixity"
+]
+
+for tool in ai_tools:
+    rb = Radiobutton(
+        root,
+        text=tool,
+        variable=selected_tool,
+        value=tool,
+        command=show_selection,
+        font=("Arial", 18)
+    )
+    rb.pack(pady=5)
+
+result_label = Label(root, text="", font=("Arial", 18))
+result_label.pack(pady=20)
+
+root.mainloop()
